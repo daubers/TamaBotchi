@@ -35,6 +35,8 @@ class Emotions(Base.Base):
         response_file.close()
         self.last_data_save = datetime.datetime.now()
 
+    def lookup_
+
     def process_message(self, message):
         """
         Handle a message
@@ -46,6 +48,9 @@ class Emotions(Base.Base):
         for item in self.data:
             if item in message['text'].lower():
                 # we need to find the user in the data list and then increment/decrement their "likeness" factor
+                if message['user'] in [i['user'] for i in self.user_data]:
+                    for user in self.user_data:
+                        if user['user'] == self.user_data:
 
         for response in self.responses:
             if response['call'] in message['text'].lower():
