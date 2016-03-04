@@ -22,15 +22,10 @@ class TamaBotchi:
                 self.channels.remove(channel.id)
 
     def message_received(self, message):
-        print(self.registered_mods)
         for mod in self.registered_mods:
-            print(mod.listen_for_what())
-            for thing in mod.listen_for_what():
-                print(thing)
+            for thing in mod.listen_for_what() or thing == "*":
                 if thing.lower() in message['text'].lower():
-                    print(thing.lower())
                     mod.process_message(message)
-        print(message)
 
     def status_received(self, status):
         pass
@@ -51,7 +46,7 @@ class TamaBotchi:
                                 self.message_received(msg)
                             elif msg['type'] == "user_typing":
                                 self.status_received(msg)
-                                
+
                         else:
                             print("Unknown message string {0}".format(msg))
                 time.sleep(1)
