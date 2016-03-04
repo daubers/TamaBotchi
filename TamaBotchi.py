@@ -46,11 +46,12 @@ class TamaBotchi:
                 msg_received = self.sc.rtm_read()
                 if msg_received:
                     for msg in msg_received:
-                        if 'type' in msg.keys():
+                        if 'type' in msg.keys() and 'text' in msg.keys():
                             if msg['type'] == "message":
                                 self.message_received(msg)
                             elif msg['type'] == "user_typing":
                                 self.status_received(msg)
+                                
                         else:
                             print("Unknown message string {0}".format(msg))
                 time.sleep(1)
